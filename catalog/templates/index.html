@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Blogsite Home</h1>
+  <p>
+    Welcome to the blogsite, have a nice reading day!
+  </p>
+  <h2>Dynamic content</h2>
+  <p>The blogsite has the following record counts:</p>
+  <ul>
+    <li><strong>Blogs:</strong> {{ num_blogs }}</li>
+    <li><strong>Bloggers:</strong> {{ num_authors }}</li>
+  </ul>
+
+  <p>
+    You have visited this page {{ num_visits }} time{{ num_visits|pluralize }}.
+  </p>
+{% endblock %}
