@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1> Blogger: {{ author.name }}</h1>
+
+  <h2><strong>Bio</strong></h2>
+  <p>{{ author.bio  }}</p>
+  <br>
+  <h2><strong>Blogs list:</strong></h2>
+  <div style="margin-left:20px;margin-top:20px">
+    {% for blog in author.blog_set.all %}
+      <p><a href="{{ blog.get_absolute_url }}">{{ blog.title }}</a> - ({{ blog.post_date }}) </p>
+    {% endfor %}
+  </div>
+  
+    {% if author.comment_set.all %}
+        <h4><strong>Comments made</strong></h4>
+
+        {% for comment in author.comment_set.all %}
+        <hr />
+        <p> <a href="{{ comment.blog.get_absolute_url }}"> {{ comment.blog }}</a> ({{ comment.post_date }}) - {{ comment.content }} </p>
+        {% endfor %}
+    {% endif %}
+{% endblock %}
